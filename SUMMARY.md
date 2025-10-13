@@ -99,8 +99,7 @@ Predicting-Road-Accident-Risk/
 ### Quick Start (3 Steps)
 ```bash
 # 1. Setup environment
-source .venv/bin/activate
-pip install -r requirements.txt
+./activate.sh  # One command to activate venv and get info!
 
 # 2. Launch Jupyter
 jupyter notebook

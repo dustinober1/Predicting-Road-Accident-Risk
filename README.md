@@ -50,15 +50,25 @@ Predicting-Road-Accident-Risk/
    cd Predicting-Road-Accident-Risk
    ```
 
-2. **Create and activate virtual environment:**
+2. **Activate the environment:**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ./activate.sh
    ```
+   *This script will activate the virtual environment and show helpful information.*
 
-3. **Install required packages:**
+3. **Or set up manually:**
    ```bash
-   pip install pandas numpy scikit-learn catboost xgboost lightgbm tqdm matplotlib seaborn jupyter
+   # Create virtual environment
+   python -m venv .venv
+
+   # Activate it
+   # On macOS/Linux:
+   source .venv/bin/activate
+   # On Windows:
+   .venv\Scripts\activate
+
+   # Install dependencies
+   pip install -r requirements.txt
    ```
 
 4. **Download competition data:**

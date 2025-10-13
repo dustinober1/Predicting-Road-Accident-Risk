@@ -8,20 +8,22 @@ git clone https://github.com/dustinober1/Predicting-Road-Accident-Risk.git
 cd Predicting-Road-Accident-Risk
 ```
 
-### 2. Create Virtual Environment
+### 2. Activate Environment (One Command!)
+```bash
+./activate.sh
+```
+*This script automatically activates the virtual environment and shows helpful project information!*
+
+### 3. Or Manual Setup
+If you prefer manual setup:
 ```bash
 # Create virtual environment
 python -m venv .venv
 
 # Activate it
-# On macOS/Linux:
 source .venv/bin/activate
-# On Windows:
-.venv\Scripts\activate
-```
 
-### 3. Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
 ```
 

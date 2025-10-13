@@ -92,6 +92,11 @@ def create_features(df: pd.DataFrame) -> pd.DataFrame:
     df['road_lighting'] = df['road_type'] + '_' + df['lighting']
     df['weather_time'] = df['weather'] + '_' + df['time_of_day']
     
+    # Ensure all categorical columns are strings and handle NaN
+    cat_cols_to_convert = ['speed_category', 'curvature_category', 'road_weather', 'road_lighting', 'weather_time']
+    for col in cat_cols_to_convert:
+        df[col] = df[col].astype(str).fillna('unknown')
+    
     return df
 
 
