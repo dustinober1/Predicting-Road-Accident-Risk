@@ -1,2 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
 .venv/
+venv/
+ENV/
+env/
+.virtualenv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# Model artifacts
 catboost_info/
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.ckpt
+*.pth
+*.model
+*.joblib
+
+# Data files (large CSVs)
+*.csv
+!playground-series-s5e10/sample_submission.csv
+playground-series-s5e10/*.csv
+
+# Logs
+*.log
+logs/
+*.out
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Temporary files
+*.tmp
+temp/
+tmp/
+
+# Submissions (optional - comment out if you want to track)
+submission*.csv
