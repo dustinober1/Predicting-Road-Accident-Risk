@@ -50,6 +50,7 @@ catboost_info/
 *.csv
 !playground-series-s5e10/sample_submission.csv
 playground-series-s5e10/*.csv
+playground-series-s5e10/ 
 
 # Logs
 *.log
