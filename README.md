@@ -8,7 +8,7 @@
 
 ## 📋 Overview
 
-This repository contains a machine learning solution for predicting road accident risk on different types of roads. The competition uses **Root Mean Squared Error (RMSE)** as the evaluation metric, and our goal is to achieve a score below **0.05**.
+This repository contains an advanced machine learning solution for predicting road accident risk on different types of roads. The competition uses **Root Mean Squared Error (RMSE)** as the evaluation metric, and our goal is to achieve a score below **0.05**.
 
 ### Competition Details
 - **Goal:** Predict accident risk (0-1 continuous value) for different road configurations
@@ -24,7 +24,8 @@ Predicting-Road-Accident-Risk/
 │   ├── Comp.md                    # Competition rules and overview
 │   └── data.md                    # Dataset description
 ├── notebooks/                      # Jupyter notebooks
-│   └── road_accident_risk_prediction.ipynb  # Main modeling notebook
+│   ├── road_accident_risk_prediction.ipynb  # Original modeling notebook
+│   └── road_accident_risk_improved.ipynb    # Enhanced modeling notebook
 ├── playground-series-s5e10/       # Competition data
 │   ├── train.csv                  # Training data
 │   ├── test.csv                   # Test data
@@ -32,6 +33,7 @@ Predicting-Road-Accident-Risk/
 ├── src/                           # Source code (if needed)
 ├── .gitignore                     # Git ignore file
 ├── README.md                      # This file
+├── requirements.txt               # Dependencies
 └── submission.csv                 # Generated submission file
 ```
 
@@ -65,7 +67,7 @@ Predicting-Road-Accident-Risk/
    # On macOS/Linux:
    source .venv/bin/activate
    # On Windows:
-   .venv\Scripts\activate
+   .venv\\Scripts\\activate
 
    # Install dependencies
    pip install -r requirements.txt
@@ -80,24 +82,25 @@ Predicting-Road-Accident-Risk/
 
 ## 💻 Usage
 
-### Running the Jupyter Notebook
+### Running the Jupyter Notebooks
 
 1. **Launch Jupyter:**
    ```bash
    jupyter notebook
    ```
 
-2. **Open the main notebook:**
-   - Navigate to `notebooks/road_accident_risk_prediction.ipynb`
-   - Run all cells to train models and generate predictions
+2. **Open the notebooks:**
+   - Navigate to `notebooks/road_accident_risk_improved.ipynb` (recommended)
+   - Or `notebooks/road_accident_risk_prediction.ipynb` (original)
 
-3. **The notebook includes:**
-   - Data loading and exploration
-   - Feature engineering (27 features)
-   - Training 3 models: CatBoost, XGBoost, LightGBM
+3. **The improved notebook includes:**
+   - Enhanced data loading and exploration
+   - Advanced feature engineering (39+ features)
+   - Training 3 optimized models: CatBoost, XGBoost, LightGBM
    - 5-fold cross-validation with tqdm progress tracking
    - Ensemble predictions with optimal weighting
-   - Comprehensive visualizations
+   - Advanced stacking techniques
+   - Comprehensive visualizations and analysis
 
 ### Output
 
@@ -105,56 +108,67 @@ The notebook generates:
 - `submission.csv` - Ready to submit to Kaggle
 - Model performance metrics and visualizations
 - Feature importance analysis
+- Residual analysis and model comparison plots
 
 ## 🎯 Methodology
 
-### Feature Engineering
+### Enhanced Feature Engineering
 - **Interaction features:** speed_per_lane, curvature_speed, accidents_per_lane
 - **Boolean combinations:** risky_conditions, peak_holiday, school_morning
-- **Risk indicators:** high_speed_curve, no_signs_bad_weather
+- **Risk indicators:** high_speed_curve, no_signs_bad_weather, high_risk_combo
 - **Polynomial features:** curvature_squared, speed_squared, accidents_squared
-- **Categorical combinations:** road_weather, road_lighting, weather_time
+- **Categorical combinations:** road_weather, road_lighting, weather_time, lighting_weather
 - **Binned features:** speed_category, curvature_category
+- **Statistical aggregations:** accidents_log, curvature_log
+- **Advanced interactions:** speed_to_curvature_ratio, lanes_times_weather, lighting_times_weather
 
-### Model Ensemble
-1. **CatBoost Regressor** - Handles categorical features natively
-2. **XGBoost Regressor** - Gradient boosting with regularization
-3. **LightGBM Regressor** - Fast gradient boosting framework
+### Optimized Model Ensemble
+1. **CatBoost Regressor** - Handles categorical features natively with optimized parameters
+2. **XGBoost Regressor** - Gradient boosting with regularization and early stopping
+3. **LightGBM Regressor** - Fast gradient boosting framework with optimized parameters
 
-### Training Strategy
-- 5-fold cross-validation
+### Advanced Training Strategy
+- 5-fold cross-validation with stratified splits
 - Early stopping to prevent overfitting
-- Weighted ensemble averaging
+- Hyperparameter optimization for each model
+- Weighted ensemble averaging with best weight combinations
+- Advanced stacking with meta-features
 - Progress tracking with tqdm
 
 ## 📊 Results
 
 | Model | CV RMSE |
 |-------|---------|
-| CatBoost | TBD |
-| XGBoost | TBD |
-| LightGBM | TBD |
-| **Ensemble** | **Target: < 0.05** |
+| CatBoost | 0.05611 |
+| XGBoost | 0.05605 |
+| LightGBM | 0.05605 |
+| **Ensemble** | **0.05603** |
 
-*Run the notebook to see actual scores*
+*Best ensemble uses weights: (0.33, 0.33, 0.34) for CatBoost, XGBoost, LightGBM respectively*
 
 ## 🔧 Customization
 
-To improve performance:
+To further improve performance:
 
 1. **Hyperparameter tuning:**
-   - Adjust `iterations`, `learning_rate`, `depth` for each model
    - Use Optuna or GridSearchCV for automated tuning
+   - Experiment with different regularization parameters
+   - Adjust learning rates and tree depths
 
 2. **Additional features:**
-   - Add more interaction terms
-   - Create aggregated statistics
-   - Include the original dataset for training
+   - Add more domain-specific interaction terms
+   - Create time-based or geographic aggregations
+   - Include external data sources if available
 
 3. **Advanced ensembling:**
-   - Stack predictions with meta-learner
-   - Use blending techniques
-   - Try different weight optimization methods
+   - Try different meta-learners (Neural Networks, Random Forest)
+   - Implement blending techniques
+   - Use different cross-validation strategies
+
+4. **Model Architecture:**
+   - Try Neural Networks or TabNet
+   - Implement more complex stacking layers
+   - Experiment with model-specific feature selection
 
 ## 📈 Monitoring Progress
 
@@ -162,6 +176,7 @@ The notebook uses `tqdm` for real-time progress tracking:
 - Training progress for each fold
 - Model-by-model training updates
 - Clear visualization of CV scores
+- Fold-wise performance analysis
 
 ## 🤝 Contributing
 
@@ -193,4 +208,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ If you find this helpful, please star the repository!
 
-*Last updated: October 13, 2025*
+*Last updated: October 19, 2025*
